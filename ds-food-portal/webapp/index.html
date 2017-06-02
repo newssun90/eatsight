@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>eatsight Portal</title>
+<link rel="stylesheet" type="text/css" href="./eatsight/css/lib/bxslider/jquery.bxslider.min.css">
+<style>
+ .slide p {font-size:11px;text-align:center}
+</style>
+<script type="text/javascript" src="./eatsight/js/lib/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./eatsight/js/lib/bxslider/jquery.bxslider.min.js"></script>
+</head>
+<body>
+<div id="wrap" style="width:100%;position:relative">
+	<header id="header" style="width:100%;height:400px;">
+		<div class="header" style="width:100%;max-width:1100px;margin:0 auto">
+			<div class="nav">
+				<div class="logo_wrap" style="padding-top:80px">
+					<h1 id="logo" style="text-align:center">
+						<a href="">
+							<img src="http://www.chungjungone.com/images/common/logo.png" max-width="100%" height="auto">
+						</a>
+					</h1>
+				</div>
+				<div class="gnb_wrap" style="width:1080px;height:50px;margin:0 auto;position:relative;border:1px solid #ccc">
+					<div class="category">
+						<a href="#" id="btnViewAllCategory">전체카테고리</a>
+					</div>
+					<div class="search_input"></div>
+					<div class="hot_keyword"></div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div id="container" style="margin:0 auto;width:1080px;border:1px solid #ccc">
+		<div style="text-align:center">
+			<h3>실시간 검색 식품</h3>
+			<h4>지금 다른 사람들은 어떤식품을 검색할까요?</h4>
+		</div>
+		<div id="slideArea">
+			<!-- <div class="slide"><img src="http://placehold.it/350x150&text=FooBar1"></div>
+			<div class="slide"><img src="http://placehold.it/350x150&text=FooBar2"></div>
+			<div class="slide"><img src="http://placehold.it/350x150&text=FooBar3"></div>
+			<div class="slide"><img src="http://placehold.it/350x150&text=FooBar4"></div>
+			<div class="slide"><img src="http://placehold.it/350x150&text=FooBar5"></div> -->
+		</div>
+	</div>
+</div>
+
+<script data-main="./eatsight/js/main" src="./eatsight/js/lib/requirejs/require.js"></script>
+
+<script>
+$(document).ready(function(){
+
+  var _data = {
+			"sliderDatas":[
+				{
+					"imgUrl":"https://s3-ap-northeast-1.amazonaws.com/daesang-storage/foods/JPG_500/10037057_JPG_500.jpg?1496122657874",
+				 	"name":"생유산균키즈",
+					"kcal":"25kcal",
+					"material":"프로바이오틱스",
+					"percent":"100%",
+					"made":"대한민국",
+					"tags":[
+						{
+							"id":"01",
+							"tagName":"유산균"
+						},
+						{
+							"id":"02",
+							"tagName":"배변"
+						},
+						{
+							"id":"03",
+							"tagName":"짱"
+						}
+					]			
+				},
+				{
+					"imgUrl":"https://s3-ap-northeast-1.amazonaws.com/daesang-storage/foods/JPG_500/10037046_JPG_500.jpg?1496123332279",
+				 	"name":"황성주 국산콩 두유 검은콩",
+					"kcal":"105Kcal",
+					"material":"두유액",
+					"percent":"70%",
+					"made":"대한민국",
+					"tags":[
+						{
+							"id":"04",
+							"tagName":"두유"
+						},
+						{
+							"id":"05",
+							"tagName":"황성주 두유"
+						},
+						{
+							"id":"06",
+							"tagName":"국산콩두유"
+						}
+					]			
+				},
+				{
+					"imgUrl":"https://s3-ap-northeast-1.amazonaws.com/daesang-storage/foods/JPG_500/10037029_JPG_500.jpg?1496124018298",
+				 	"name":"아침에주스 유기농오렌지",
+					"kcal":"110kcal",
+					"material":"유기농오렌지과즙",
+					"percent":"12.32%",
+					"made":"대한민국",
+					"tags":[
+						{
+							"id":"07",
+							"tagName":"유기농음료"
+						},
+						{
+							"id":"08",
+							"tagName":"디즈니"
+						},
+						{
+							"id":"09",
+							"tagName":"아침에주스"
+						}
+					]			
+				},
+				{
+					"imgUrl":"https://s3-ap-northeast-1.amazonaws.com/daesang-storage/foods/JPG_500/10037028_JPG_500.jpg?1496124395148",
+				 	"name":"고려홍삼캔디",
+					"kcal":"25kcal",
+					"material":"홍삼농축액",
+					"percent":"0.2%",
+					"made":"대한민국",
+					"tags":[
+						{
+							"id":"10",
+							"tagName":"고려"
+						},
+						{
+							"id":"11",
+							"tagName":"홍삼"
+						},
+						{
+							"id":"12",
+							"tagName":"캔디"
+						}
+					]			
+				}
+			]
+		};
+	
+
+  /* bxSlider */
+  var _sliderJEl = $('#slideArea').bxSlider({
+		slideWidth: 200,
+	  	minSlides: 2,
+    	maxSlides: 4,
+    	slideMargin: 100,
+    	auto:true,
+    	onSliderLoad:function(){
+    		$.each(_data.sliderDatas, function(a,b){
+    			var _tagNms = "";
+    			for(var i=0; i<this.tags.length; i++){
+    				_tagNms+= "#"+this.tags[i].tagName;
+    			}
+    			var _jEl = '<div class="slide"><img width="200" height="200" src="'+this.imgUrl+'">'+
+    							'<p>'+this.name+'</p>'+
+    							'<p>'+this.kcal+'</p>'+
+    							'<p>'+this.material+' '+this.percent+" ("+this.made+")"+'</p>'+
+    							'<p>'+_tagNms+'</p>'+
+    					   '</div>';
+    			$('#slideArea').append(_jEl);
+    		});
+    	}
+  });
+  
+  _sliderJEl.reloadSlider();
+  
+  /* 전체카테고리 템플릿 호출 */
+  $("#btnViewAllCategory").on("click", function(e){
+	  e.preventDefault();
+	  alert("click!!");
+  });
+});
+</script>
+</body>
+</html>

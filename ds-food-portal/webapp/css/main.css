@@ -1,0 +1,35 @@
+/***** Layout *****/
+#mainwrap{}
+#mainwrap .header{height:400px;background:#ccc}
+#mainwrap .header .headerwrap{position:relative;top:120px;width:1000px;margin:0 auto}
+#main_container{background:#f5f5f5;padding-top:50px;padding-bottom:70px;}
+#main_container .contents{position:relative;margin:0 auto;width:1000px;}
+/***** Header *****/
+.inputwrap{}
+.inputwrap .maininput{width:300px;height:35px;}
+.sch_smit1{width:100px;height:35px;}
+/***** Contents *****/
+.main_prd{width:1000px;}
+.main_prd:after { content:""; display:block; clear:both;}
+.main_prd ul{}
+.main_prd li{float:left;height:400px;padding:10px;border:1px solid #d1d1d1;background:#fff;overflow:hidden;}
+.main_prd li:hover {cursor:hand;border:1px solid #333;transition: 0.5s;}
+.main_prd li:last-child{margin-right:0px !important;}
+.main_prd li img{position:relative;top:0;width:226px;height:226px;}
+.main_prd li .span{overflow: hidden;text-overflow:ellipsis;}
+.main_prd .info1{margin-top:10px;height:30px;letter-spacing:-em;}
+.main_prd .info1 span{font-size:12px;color:#fff;padding: 0 2px;height:14px;margin-right:4px;}
+.main_prd .info1 span:hover{cursor:hand;opacity:0.7;transition: 0.5s;}
+.main_prd .info1 .mark1{background:#33d28d}
+.main_prd .info1 .mark2{background:#84d6ef}
+.main_prd .info1 .mark3{background:#f2bc6f}
+.main_prd .info1 .mark4{background:#f2bc6f}
+.main_prd .info2{height:40px;letter-spacing:-em;}
+.main_prd .info2 .prdname{color:#333;font-size:16px;margin-right:4px;word-break:keep-all;word-break:break-word}
+.main_prd .info2 .kcal{color:#999;font-size:12px;}
+.main_prd .info3{height:20px;letter-spacing:-em;}
+.main_prd .info3 .materialname{color:#666;font-size:12px;}
+.main_prd .info4{margin-top:15px;letter-spacing:-em;}
+.main_prd .info4 .hashtag{color:#666;background:#ccc;font-size:13px;padding: 0 2px;margin-right:4px;}
+
+

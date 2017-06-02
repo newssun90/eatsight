@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/lib/datatables/jquery.dataTables.css">
+<script type="text/javascript" src="../js/lib/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="../js/lib/datatables/datatables.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#exampleList").dataTable({
+		searching: true,
+		ajax: {
+			url:"http://localhost/FoodMgmt/eatsight/categories/cls",
+			type: "GET" // request type
+		},
+	 	columns: [
+	 		{ data:"msg", name: 'number', title: "번호", width: "40px"},
+	 		{ data:"msg1", name: 'test', title: "테스트", width: "40px"}
+        ]
+	});
+	
+});
+</script>
+</head>
+<body>
+<!-- Contents -->
+<div id="contents">
+
+	<!-- apis-section-list -->
+	<div class="apis-section-list">
+		<!-- 리스트 -->
+        <div class="tab-content">
+            <div id="foodinfo-grid" class="apis-board tab-pane active">
+                <table id="exampleList" class="display" cellspacing="0" width="100%"></table>
+            </div>
+			<div class="pageNew"><ul id="pagination-demo" class="pagination-sm"></ul></div>
+        </div>
+		<!--// 리스트 -->
+	</div>
+	<!--// apis-section-list -->
+</div>	
+<!--// Contents  -->
+</body>
+</html>
